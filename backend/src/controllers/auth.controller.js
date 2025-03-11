@@ -2,6 +2,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";	// Hashes passwords
 import { generateToken } from "../lib/utils.js"; // import generatetoken from "../lib/utils.js";
+import cloudinary from "../lib/cloudinary.js";
 
 export const signup = async (req, res) => {
 	const { fullName, email, password } = req.body;
@@ -88,5 +89,33 @@ export const logout = (req, res) => {
 };
 
 export const updateProfile = async (req, res) => {
+	try {
+		const {profilePic} = req.body;	// Get profile picture from request body.
+		const userId = req.user._id;	// Checks which user it is.
 
+		if (!profilePic) {
+			return res.status(400).json({message: "Profile picture required"});
+		}
+
+		// Upload pfp to cloudinary
+		// Not a DB, it's a bucket for images
+		const uploadResponse = await cloudinary.uploader.upload(profilePic);
+		const updatedUser = user.findByIdAndUpdate(userId, {	// Update in DB.
+			profilePicture: uploadResponse.secure_url
+		}, {new: true});	// Returns user after being updated
+
+		res.status(200).json(updatedUser);
+	} catch (error) {
+		console.log("ERROR [auth.controller.js]: updateProfile controller failed.", error.message);
+		res.status(500).json({ message: "Internal server error" });
+	}
 };
+
+export const checkAuth = (req, res) => {
+	try {
+		res.status(200).json(req.user);	// Returns user back to client
+	} catch (error) {
+		console.log("ERROR [auth.controller.js]: checkAuth controller failed.", error.message);
+		res.status(500).json({ message: "Internal server error" });
+	}
+}
