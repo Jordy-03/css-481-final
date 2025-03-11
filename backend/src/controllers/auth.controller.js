@@ -3,18 +3,20 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";	// Hashes passwords
 import { generateToken } from "../lib/utils.js"; // import generatetoken from "../lib/utils.js";
 
-
 export const signup = async (req, res) => {
 	const { fullName, email, password } = req.body;
 	try {
+		// Check if all fields are filled
 		if (!fullName || !email || !password) {
 			return res.status(400).json({ message: "All fields are required" });
 		}
 
+		// Check if password is at least 2 characters
 		if (password.length < 2) {
 			return res.status(400).json({ message: "Password must be at least 2 characters" });
 		}
 
+		// Check if user already exists
 		const user = await User.findOne({ email })
 		if (user) {
 			return res.status(400).json({ message: "Email already exists" });
@@ -31,12 +33,10 @@ export const signup = async (req, res) => {
 			password: hashedPassword
 		});
 
-		console.log("full name", fullName);
-
 		if (newUser) {
-			// generate jwt token
-			generateToken(newUser._id, res) // Note: _id is how MongoDB stores the id
-			await newUser.save();	// Save user to database
+			// Generate jwt token
+			generateToken(newUser._id, res) // Note: _id is how MongoDB stores the id.
+			await newUser.save();			// Save user to database.
 
 			res.status(201).json({ message: "User created successfully" }); // 201 = created
 		} else {
@@ -48,10 +48,45 @@ export const signup = async (req, res) => {
 	}
 };
 
-export const login = (req, res) => {
-	res.send("signup route");
+export const login = async (req, res) => {
+	const { email, password } = req.body
+	try {
+		// Check if user exists.
+		// Note: findOne is a mongoose method that returns the first document that matches the query criteria.
+		const user = await User.findOne({ email });
+		if (!user) {
+			return res.status(400).json({ message: "Invalid credentials" });
+		}
+
+		// Check if password matches
+		const isMatch = await bcrypt.compare(password, user.password);
+		if (!isMatch) {
+			return res.status(400).json({ message: "Invalid credentials" });
+		}
+
+		generateToken(user._id, res); // Note: _id is how MongoDB stores the id.
+		res.status(200).json({
+			_id:user._id,
+			fullName:user.fullName,
+			email: user.email,
+			profilePicture: user.profilePicture
+		});
+	} catch (error) {
+		console.log("ERROR [auth.controller.js]: login controller failed.", error.message);
+		res.status(500).json({ message: "Internal server error" });
+	}
 };
 
 export const logout = (req, res) => {
-	res.send("signup route");
+	try {
+		res.cookie("jwt", "", {maxAge: 0})	// Clear cookie
+		res.status(200).json({message: "Logged out successfully"});
+	} catch (error) {
+		console.log("ERROR [auth.controller.js]: logout controller failed.", error.message);
+		res.status(500).json({ message: "Internal server error" });
+	}
+};
+
+export const updateProfile = async (req, res) => {
+
 };
