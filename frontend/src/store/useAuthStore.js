@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { axiosInstance }from "../lib/axios";
+import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
 
 // Allows us to destructure authUser so that 
@@ -25,7 +25,7 @@ export const useAuthStore = create((set) => ({
     },
 
     signup: async (data) => {
-        set( { signingUp: true } );
+        set({ signingUp: true });
         try {
             const res = await axiosInstance.post("/auth/signup", data); // Redirects to signup page
             toast.success("Account created successfully!");
@@ -40,30 +40,40 @@ export const useAuthStore = create((set) => ({
     login: async (data) => {
         set({ isLoggingIn: true });
         try {
-          const res = await axiosInstance.post("/auth/login", data);    // Redirects to login page
-          
-          set({ authUser: res.data });
-          toast.success("Logged in successfully");
+            const res = await axiosInstance.post("/auth/login", data);    // Redirects to login page
 
-          get().connectSocket();
+            set({ authUser: res.data });
+            toast.success("Logged in successfully");
+
+            get().connectSocket();
         } catch (error) {
-          toast.error(error.response.data.message);
+            toast.error(error.response.data.message);
         } finally {
-          set({ isLoggingIn: false });
+            set({ isLoggingIn: false });
         }
-      },
+    },
 
-    logout: async() => {
+    logout: async () => {
         try {
             await axiosInstance.post("/auth/logout");    // Redirects to login page
-            set( {authUser: null} );
+            set({ authUser: null });
             toast.success("Logged out successfully!");
         } catch (error) {
             toast.error("ERROR [useAuthStore.js]: ", error.response.data);
         }
-    }
+    },
 
-    updateProfile: async(data) => {
-        
-    }
+    updateProfile: async (data) => {
+        set({ updatingProfile: true });
+        try {
+            const res = await axiosInstance.put("/auth/update-profile", data);
+            set({ authUser: res.data });
+            toast.success("Profile updated successfully");
+        } catch (error) {
+            console.log("error in update profile:", error);
+            toast.error(error.response.data.message);
+        } finally {
+            set({ isUpdatingProfile: false });
+        }
+    },
 }));
