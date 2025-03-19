@@ -13,7 +13,7 @@ const NavBar = () => {
                 <div className="flex items-center justify-between h-full">
                     <div className="flex items-center gap-8">
                         <Link to="/" className="flex items-center gap-2">
-                            LOGO
+                            MALARKY!
                         </Link>
                     </div>
                 </div>
