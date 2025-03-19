@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useChatStore } from "../store/useChatStore";
-import { Image, Send } from "lucide-react";
+import { Image, Send, X } from "lucide-react";
 
 const MessageInput = () => {
     const [text, setText] = useState("");
@@ -10,11 +10,14 @@ const MessageInput = () => {
 
     const handleImageSelect = (e) => {
         const file = e.target.files[0];
+
+        {/* Check if file is an image */}
         if (!file.type.startsWith("image/")) {
             toast.error("Please select an image file");
             return;
         }
 
+        {/* Preview image */}
         const reader = new FileReader();
         reader.onloadend = () => {
             setImagePreview(reader.result);
@@ -24,6 +27,7 @@ const MessageInput = () => {
 
     const removeImage = () => {
         setImagePreview(null);
+        {/* Clear file input value */}
         if (fileInputRef.current) fileInputRef.current.value = "";
     }
 
@@ -37,7 +41,7 @@ const MessageInput = () => {
                 image: imagePreview,
             });
 
-            // Clear form
+            { /* Clear input fields */}
             setText("");
             setImagePreview(null);
             if (fileInputRef.current) fileInputRef.current.value = "";
@@ -57,6 +61,7 @@ const MessageInput = () => {
                             alt="Preview"
                             className="w-20 h-20 object-cover rounded-lg border border-zinc-700"
                         />
+                        {/* Remove image button */}
                         <button
                             onClick={removeImage}
                             className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-base-300

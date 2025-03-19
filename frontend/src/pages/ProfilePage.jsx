@@ -7,9 +7,11 @@ const ProfilePage = () => {
     const [selectedImage, setSelectedImage] = useState(null);
 
     const handleImageUpload = async (e) => {
+        console.log("[ProfilePage]: starting handleImageUpload");
         const file = e.target.files[0];
         if (!file) return;
     
+        console.log("[ProfilePage]: Summoning Reader");
         const reader = new FileReader();
     
         reader.readAsDataURL(file);
@@ -17,6 +19,8 @@ const ProfilePage = () => {
         reader.onload = async () => {
           const base64Image = reader.result;
           setSelectedImage(base64Image);
+          console.log("reader results: ", base64Image);
+          console.log("[handleImageUpload]: UPDATING PROFILE PICTURE");
           await updateProfile({ profilePicture: base64Image });
         };
       };
@@ -57,7 +61,7 @@ const ProfilePage = () => {
                                 >
                                     Change Picture
                                 </div>
-
+                                    
                                 <Camera className="w-5 h-5 text-base-200" />
                                 <input
                                     type="file"

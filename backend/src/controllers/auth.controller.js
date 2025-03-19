@@ -90,18 +90,18 @@ export const logout = (req, res) => {
 
 export const updateProfile = async (req, res) => {
 	try {
-		const {profilePic} = req.body;	// Get profile picture from request body.
+		const {profilePicture} = req.body;	// Get profile picture from request body.
 		const userId = req.user._id;	// Checks which user it is.
 
-		if (!profilePic) {
+		if (!profilePicture) {
 			return res.status(400).json({message: "Profile picture required"});
 		}
 
 		// Upload pfp to cloudinary
 		// Not a DB, it's a bucket for images
-		const uploadResponse = await cloudinary.uploader.upload(profilePic);
-		const updatedUser = user.findByIdAndUpdate(userId, {	// Update in DB.
-			profilePicture: uploadResponse.secure_url
+		const uploadRes = await cloudinary.uploader.upload(profilePicture);
+		const updatedUser = await user.findByIdAndUpdate(userId, {	// Update in DB.
+			profilePicture: uploadRes.secure_url
 		}, {new: true});	// Returns user after being updated
 
 		res.status(200).json(updatedUser);
