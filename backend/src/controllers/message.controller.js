@@ -3,7 +3,7 @@ import User from "../models/user.model.js";
 
 export const getUsersForSidebar = async(req, res) => {
     try {
-        loggedInUserId = req.user._id; // Get user id from request object
+        const loggedInUserId = req.user._id; // Get user id from request object
 
         // Tells Mongo to return all users except the logged in user.
         // Don't return password field, regardless if it's hashed.
