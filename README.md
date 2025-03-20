@@ -8,14 +8,18 @@ real-time communication between user
 **Main Problem Addressed:** There doesn't exist a dedicated chatroom application for UWB students to communicate between
 one another. To solve this, we provide a secure and private connection where people may DM with other students they may
 not know.
+<br><br>
+**Link to Webpage:** https://css-481-final.onrender.com
 
-## How To Run Webpage
+## How To Run Webpage locally:
 To run the webpage, complete the following steps:
 1. Download the Github repository and open it with any IDE that allows for multiple terminals to run.
-2. For the first terminal, ensure you are in directory `..\css-481-final\backend>`.
-4. Run `npm run build` **THEN** `npm run dev` to start the backend.
-5. For the second terminal, ensure you are in directory `\css-481-final\frontend>`.
-6. Run `npm run build` **THEN** `npm run dev` to start the frontend.
+2. Ensure you're in root directory `\css-481-final-main>` containing backend & frontend
+3. In Backend folder, add a `.env` file and copyp
+4. For the first terminal, ensure you are in directory `..\css-481-final\backend>`.
+5. Run `npm run build` **THEN** `npm run dev` to start the backend.
+6. For the second terminal, ensure you are in directory `\css-481-final\frontend>`.
+7. Run `npm run build` **THEN** `npm run dev` to start the frontend.
 
 ## Frontend & Backend
 
