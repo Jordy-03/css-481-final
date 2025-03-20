@@ -34,6 +34,7 @@ const SignupPage = () => {
         return true;
     };
 
+    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
 

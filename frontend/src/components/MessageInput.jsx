@@ -25,6 +25,7 @@ const MessageInput = () => {
 
     return (
         <div className="p-4 w-full">
+            {/* Message input field */}
             <form onSubmit={handleSendMessage} className="flex items-center gap-2">
                 <div className="flex-1">
                     <input
@@ -35,6 +36,8 @@ const MessageInput = () => {
                         onChange={(e) => setText(e.target.value)}
                     />
                 </div>
+                
+                {/* Send button */}
                 <button
                     type="submit"
                     className="btn btn-sm btn-circle"

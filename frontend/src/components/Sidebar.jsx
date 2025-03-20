@@ -6,8 +6,10 @@ import { useAuthStore } from "../store/useAuthStore";
 const Sidebar = () => {
     const { getUsers, users, selectedUser, setSelectedUser, usersLoading } = useChatStore(); // Call useChatStore hook to access selectedUser
 
+    // Call useAuthStore hook to access onlineUsers
     const { onlineUsers } = useAuthStore()
 
+    // Fetch users when the component mounts
     useEffect(() => {
         getUsers();
     }, [getUsers])
@@ -19,6 +21,7 @@ const Sidebar = () => {
                     <Users className="size-6" />
                     <span className="font-medium hidden lg:block">Contacts</span>
                 </div>
+                {/* Sidebar content */}
                 <div className="overflow-y-auto w-full py-3">
                     {users.map((user) => (
                         <button

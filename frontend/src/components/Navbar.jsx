@@ -46,6 +46,7 @@ const NavBar = () => {
                                 )}
                             </Link>
 
+                            {/* Logout button */}
                             <button 
                                 className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-base-200 transition-colors duration-200" 
                                 onClick={logout}
