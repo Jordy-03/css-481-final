@@ -1,0 +1,21 @@
+{
+  "name": "css-481-final",
+  "version": "1.0.0",
+  "description": "**Created by:** Henrie Filart, Justin Yapjoco, and Jordy Ruiz",
+  "main": "index.js",
+  "scripts": {
+    "build":"npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start":"npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jordy-03/css-481-final.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jordy-03/css-481-final/issues"
+  },
+  "homepage": "https://github.com/Jordy-03/css-481-final#readme"
+}
