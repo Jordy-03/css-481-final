@@ -62,8 +62,8 @@ const Sidebar = () => {
                                     className="rounded-full w-12 h-12"
                                 />
                                 {onlineUsers.includes(user._id) && (
-                                    <span className="absolute bottom-0 right-0 w-4 h-4 bg-success-500 
-                                        rounded-full border-2 border-white"
+                                    <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 
+                                        rounded-full border-2 border-base-100"
                                     />
                                 )}
                             </div>
@@ -71,8 +71,7 @@ const Sidebar = () => {
                             {/* User info */}
                             <div className="hidden lg:block text-left min-w-0">
                                 <div className="font-medium truncate">{user.fullName}</div>
-                                <div className="text-sm truncate text-base-content/70">
-                                    {/* Display online or offline status */}
+                                <div className={`text-sm truncate ${onlineUsers.includes(user._id) ? "text-green-500" : "text-base-content/70"}`}>
                                     {onlineUsers.includes(user._id) ? "Online" : "Offline"}
                                 </div>
                             </div>
