@@ -16,6 +16,10 @@ const App = () => {
   const { authUser, checkAuth, checkingAuth, onlineUsers } = useAuthStore(); // Destructure authUser and checkAuth from useAuthStore
   useEffect(() => { checkAuth() }, [checkAuth]);  // Check if user is authenticated
 
+  useEffect(() => {
+    document.title = 'Malarky!';
+  }, []);
+
   console.log({ onlineUsers });
 
   // If checkingAuth is true and authUser is false, display loading text
