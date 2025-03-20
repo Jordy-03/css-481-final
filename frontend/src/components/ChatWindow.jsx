@@ -9,6 +9,7 @@ const ChatWindow = () => {
     const { messages, getMessages, messagesLoading, selectedUser} = useChatStore();
     const {authUser} = useAuthStore();
 
+    // Fetch messages when the selected user changes
     useEffect(() => {
         getMessages(selectedUser._id);
     }, [selectedUser._id, getMessages]);
@@ -31,15 +32,8 @@ const ChatWindow = () => {
                                 {formatTime(message.createdAt)}
                             </time>
                         </div>
-                        <div className="chat-bubble flex flex-col">
-                            {message.image && (
-                                <img 
-                                    src={message.image} 
-                                    alt="chat" 
-                                    className="sm:max-w-[200px] rounded-md mb-2" 
-                                />
-                            )}
-                            {message.text && <p>{message.text}</p>}
+                        <div className="chat-bubble">
+                            <p>{message.text}</p>
                         </div>
                     </div>
                 ))}
@@ -49,4 +43,5 @@ const ChatWindow = () => {
         </div>
     )
 };
+
 export default ChatWindow;
