@@ -28,12 +28,13 @@ app.use("/api/messages", messageRoutes);
 // We'll set path to the static assets, under /frontend/dist
 // folder that will be generated upon running `npm run build`.
 // From there, we will get route and send the index.html file.
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../frontend/build')));    // Serve static files
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
     });
-}
+  }
 
 server.listen(PORT, () => {
     console.log('Server is running on PORT: ' + PORT);
