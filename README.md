@@ -1,5 +1,11 @@
 # Malarky [Chatroom]
 
+**Overview:** Our chat application is designed to allow individuals to exchange messages instantly, providing seamless and 
+real-time communication between user 
+<br><br>
+**Main Problem Addressed:** There doesn't exist a dedicated chatroom application for UWB students to communicate between
+one another. To solve this, we provide a secure and private connection where people may DM with others.
+
 ## How To Run Webpage
 To run the webpage, complete the following steps:
 1. Download the Github repository and open it with any IDE that allows for multiple terminals to run.
@@ -7,12 +13,6 @@ To run the webpage, complete the following steps:
 3. Run `npm run dev`.
 4. For the second terminal, ensure you are in directory "\css-481-final\frontend>".
 5. Run `npm run dev`.
-
-**Overview:** Our chat application is designed to allow individuals to exchange messages instantly, providing seamless and 
-real-time communication between user 
-<br><br>
-**Main Problem Addressed:** There doesn't exist a dedicated chatroom application for UWB students to communicate between
-one another. To solve this, we provide a secure and private connection where people may DM with others.
 
 ## Frontend
 
