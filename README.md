@@ -16,15 +16,18 @@ To run the webpage, complete the following steps:
 4. For the second terminal, ensure you are in directory "\css-481-final\frontend>".
 5. Run `npm run dev`.
 
-## Frontend
+## Frontend & Backend
 
 To create Malarky with respect to the frontend, we used the following set:
 ### Packages:
 - BCrypt
+- Node.js
+- Express
 - Nodemon
 - Mongoose
+- and more
 ### Libraries:
+- React
 - DaisyUI
 - Tailwind CSS
-
-## Backend
+- Lucide React
