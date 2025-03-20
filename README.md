@@ -1,5 +1,10 @@
 # Malarky [Chatroom]
 
+**How To Run Webpage**
+To run the webpage, complete the following steps:
+1. Download the Github repository and open it with any IDE that allows for multiple terminals to run.
+2. 
+
 **Overview:** Our chat application is designed to allow individuals to exchange messages instantly, providing seamless and 
 real-time communication between user 
 <br><br>
