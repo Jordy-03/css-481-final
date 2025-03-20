@@ -1,34 +1,12 @@
-import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
-import { Camera, Mail, User } from "lucide-react"
+import { Mail, User } from "lucide-react"
 
 const ProfilePage = () => {
-    const { authUser, updatingProfile, updateProfile } = useAuthStore();
-    const [selectedImage, setSelectedImage] = useState(null);
-
-    const handleImageUpload = async (e) => {
-        console.log("[ProfilePage]: starting handleImageUpload");
-        const file = e.target.files[0];
-        if (!file) return;
-    
-        console.log("[ProfilePage]: Summoning Reader");
-        const reader = new FileReader();
-    
-        reader.readAsDataURL(file);
-    
-        reader.onload = async () => {
-          const base64Image = reader.result;
-          setSelectedImage(base64Image);
-          console.log("reader results: ", base64Image);
-          console.log("[handleImageUpload]: UPDATING PROFILE PICTURE");
-          await updateProfile({ profilePicture: base64Image });
-        };
-      };
+    const { authUser } = useAuthStore();
 
     return (
         <div className="h-screen pt-20">
             <div className="max-w-2xl mx-auto p-4 py-8">
-
                 {/* Profile card (Grey box surrounding profile section) */}
                 <div className="bg-base-300 rounded-xl p-6 space-y-8">
                     {/* Profile section */}
@@ -36,46 +14,8 @@ const ProfilePage = () => {
                         <h1 className="text-4xl font-semibold">Profile Info</h1>
                     </div>
 
-                    {/* Avator upload section */}
                     <div className="flex flex-col items-center gap-4">
-                        <div className="relative">
-                            <img
-                                src={selectedImage || authUser.profilePicture || "/vite.svg"}
-                                alt="Profile"
-                                className="size-32 rounded-xl object-cover border-4 border-black "
-                            />
-                            <label
-                                htmlFor="avatar-upload"
-                                className={`
-                                    absolute top-0 right-0 
-                                    bg-base-content hover:scale-105
-                                    p-2 rounded-full cursor-pointer group
-                                    transition-all duration-200
-                                    ${updatingProfile ? "animate-pulse pointer-events-none" : ""}
-                                `}
-                            >
-                                {/* Tooltip */}
-                                <div
-                                    className="absolute -top-10 right-0 bg-gray-700 text-white text-xs px-3 py-1 rounded-md opacity-0 
-                                        transition-opacity duration-200 group-hover:opacity-100 pointer-events-none"
-                                >
-                                    Change Picture
-                                </div>
-                                    
-                                <Camera className="w-5 h-5 text-base-200" />
-                                <input
-                                    type="file"
-                                    id="avatar-upload"
-                                    className="hidden"
-                                    accept="image/*"
-                                    onChange={handleImageUpload}
-                                    disabled={updatingProfile}
-                                />
-                            </label>
-                        </div>
-
                         <div className="flex justify-between gap-8">
-
                             {/* Profile info */}
                             <div className="space-y-6">
                                 {/* Full Name */}
@@ -110,8 +50,6 @@ const ProfilePage = () => {
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
