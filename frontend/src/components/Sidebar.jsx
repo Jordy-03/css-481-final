@@ -56,6 +56,11 @@ const Sidebar = () => {
 
                         >
                             <div className="relative mx-auto lg:mx-0">
+                                <img
+                                    src={user.profilePicture || "/vite.svg"}
+                                    alt={user.name}
+                                    className="rounded-full w-12 h-12"
+                                />
                                 {onlineUsers.includes(user._id) && (
                                     <span className="absolute bottom-0 right-0 w-4 h-4 bg-success-500 
                                         rounded-full border-2 border-white"
