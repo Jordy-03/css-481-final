@@ -4,24 +4,16 @@
 */}
 const NoChatSelected = () => {
   return (
-    <div className="w-full flex flex-1 flex-col items-center justify-center p-16 bg-base-100/50">
-      <div className="max-w-md text-center space-y-6">
-        {/* LOGO */}
-        <div className="flex justify-center gap-4 mb-4">
-          <div className="relative">
-            <div>
-              <h1>LOGO</h1>
-            </div>
+      <div className="flex-1 flex items-center justify-center">
+          <div className="text-center px-4 -space-y-20">
+              <img 
+                  src="/public/MalarkyLogo.png" 
+                  alt="Malarky Logo" 
+                  className="h-[400px] w-auto object-contain mx-auto"
+              />
+              <p className="text-xl text-gray-600">Select a chat to start messaging</p>
           </div>
-        </div>
-
-        {/* Welcome Text */}
-        <h2 className="text-2xl font-bold">Malarky!</h2>
-        <p className="text-base-content/60">
-          Select a conversation to start chatting :&#41;
-        </p>
       </div>
-    </div>
   );
 };
 
