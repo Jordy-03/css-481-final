@@ -10,6 +10,7 @@ const LoginPage = () => {
     });
     const {login, loggingIn} = useAuthStore();
 
+    // Handle form submission
     const handleSubmit = async(e) => {
         e.preventDefault();
         login(formData);

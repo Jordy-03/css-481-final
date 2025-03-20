@@ -10,6 +10,7 @@ const Sidebar = () => {
     const { onlineUsers } = useAuthStore()
     const [onlineOnly, setOnlineOnly] = useState(false);
 
+    // Fetch users when the component mounts
     useEffect(() => {
         getUsers();
     }, [getUsers])
@@ -49,9 +50,8 @@ const Sidebar = () => {
                             onClick={() => setSelectedUser(user)}   // Updates selectedUser state
                             className={`
                             w-full p-3 flex items-center gap-3
-                            hover:bg-base-300 transition-colors
-                            ${selectedUser?._id === user._id ? "bg-base-300 ring-1 ring-base-300" : ""}    
-                                
+                            hover:bg-base-200 hover:rounded-lg transition-all duration-200
+                            ${selectedUser?._id === user._id ? "bg-base-300 rounded-lg ring-1 ring-base-300" : ""}    
                             `}
 
                         >
@@ -71,7 +71,7 @@ const Sidebar = () => {
                             {/* User info */}
                             <div className="hidden lg:block text-left min-w-0">
                                 <div className="font-medium truncate">{user.fullName}</div>
-                                <div className="text-sm truncate text-base-300">
+                                <div className="text-sm truncate text-base-content/70">
                                     {/* Display online or offline status */}
                                     {onlineUsers.includes(user._id) ? "Online" : "Offline"}
                                 </div>
