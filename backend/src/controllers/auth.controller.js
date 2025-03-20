@@ -100,7 +100,7 @@ export const updateProfile = async (req, res) => {
 		// Upload pfp to cloudinary
 		// Not a DB, it's a bucket for images
 		const uploadRes = await cloudinary.uploader.upload(profilePicture);
-		const updatedUser = await user.findByIdAndUpdate(userId, {	// Update in DB.
+		const updatedUser = await User.findByIdAndUpdate(userId, {	// Update in DB.
 			profilePicture: uploadRes.secure_url
 		}, {new: true});	// Returns user after being updated
 

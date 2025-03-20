@@ -48,7 +48,7 @@ const ChatWindow = () => {
                             {/* Display sender's avatar */}
                             <div className="size-10 rounded-xl border">
                                 <img 
-                                    src={message.sender === authUser ? 
+                                    src={message.senderId === authUser._id ? 
                                             authUser.profilePicture || "/vite.svg" 
                                             : 
                                             selectedUser.profilePicture || "/vite.svg"} 
