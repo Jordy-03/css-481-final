@@ -13,10 +13,10 @@ import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 
 const App = () => {
-  const { authUser, checkAuth, checkingAuth } = useAuthStore(); // Destructure authUser and checkAuth from useAuthStore
+  const { authUser, checkAuth, checkingAuth, onlineUsers } = useAuthStore(); // Destructure authUser and checkAuth from useAuthStore
   useEffect(() => { checkAuth() }, [checkAuth]);  // Check if user is authenticated
 
-  console.log({ authUser });
+  console.log({ onlineUsers });
 
   // If checkingAuth is true and authUser is false, display loading text
   if (checkingAuth && !authUser) {

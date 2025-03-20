@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 
 const ChatHeader = () => {
   const { selectedUser, setSelectedUser } = useChatStore();
-  const { onlineUsers } = useAuthStore();
+  const { onlineUsers } = useAuthStore();   {/* Call useAuthStore hook to access onlineUsers */}
 
   return (
     <div className="p-2.5 border-b border-base-300">

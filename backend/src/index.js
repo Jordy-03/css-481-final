@@ -12,7 +12,7 @@ dotenv.config();
 
 const PORT = process.env.PORT; 
 
-app.use(express.json());    // Middleware
+app.use(express.json({ limit: "50mb"}));    // Middleware
 app.use(cookieParser());    // Extracts json data out of body
 app.use(cors( {
     origin: "http://localhost:5173",

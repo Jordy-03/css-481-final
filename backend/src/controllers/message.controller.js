@@ -1,5 +1,8 @@
+import { get } from "mongoose";
 import Message from "../models/message.model.js";
 import User from "../models/user.model.js";
+import { getReceiverSocketId, io } from "../lib/socket.js";
+import cloudinary from "../lib/cloudinary.js";
 
 export const getUsersForSidebar = async(req, res) => {
     try {
@@ -30,7 +33,8 @@ export const getMessages = async(req, res) => {
 
         res.status(200).json(messages); // Return messages
     } catch (error) {
-
+        console.log("ERROR [message.controller.js]: getMessages controller failed.", error.message);
+        res.status(500).json({ message: "Internal server error" });
     }
 };
 
@@ -41,12 +45,14 @@ export const sendMessage = async(req, res) => {
         const senderId = req.user._id;
 
         let imageUrl;
+        console.log("uploading image");
         if (image) {
             // Upload image to cloudinary
             const uploadResponse = await cloudinary.uploader.upload(image);
             imageUrl = uploadResponse.secure_url;
         }
 
+        // Define new message object
         const newMessage = new Message ({
             senderId,
             receiverId,
@@ -56,7 +62,12 @@ export const sendMessage = async(req, res) => {
 
         await newMessage.save();
 
-        // todo: realtime functionality goes here (socket.io)
+        // Send message to receiver ONLY and check if receiver is online
+        const receiverSocketId = getReceiverSocketId(receiverId);
+        if (receiverSocketId) {
+            io.to(receiverSocketId).emit("newMessage", newMessage);
+        }
+
         res.status(201).json(newMessage);
     } catch (error) {
         console.log("ERROR [message.controller.js]: sendMessage controller failed.", error.message);
