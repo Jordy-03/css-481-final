@@ -1,6 +1,6 @@
 # Malarky [Chatroom]
 
-Created by: Henrie Filart, Justin Yapjoco, and Jordy Ruiz
+**Created by:** Henrie Filart, Justin Yapjoco, and Jordy Ruiz
 
 **Overview:** Our chat application is designed to allow individuals to exchange messages instantly, providing seamless and 
 real-time communication between user 
