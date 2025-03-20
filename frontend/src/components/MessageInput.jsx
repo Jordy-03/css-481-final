@@ -37,7 +37,7 @@ const MessageInput = () => {
 
         try {
             await sendMessage({
-                text: text.trim(),
+                text: text.trim() || "",  // Send empty string if no text
                 image: imagePreview,
             });
 
