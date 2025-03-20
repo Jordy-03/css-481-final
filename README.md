@@ -12,9 +12,9 @@ one another. To solve this, we provide a secure and private connection where peo
 To run the webpage, complete the following steps:
 1. Download the Github repository and open it with any IDE that allows for multiple terminals to run.
 2. For the first terminal, ensure you are in directory "..\css-481-final\backend>".
-4. Run `npm run build` AND `npm run dev` to start the backend.
+4. Run `npm run build` <u>**AND**</u> `npm run dev` to start the backend.
 5. For the second terminal, ensure you are in directory "\css-481-final\frontend>".
-6. Run `npm run build` AND `npm run dev` to start the frontend.
+6. Run `npm run build` <u>**AND**</u> `npm run dev` to start the frontend.
 
 ## Frontend & Backend
 
