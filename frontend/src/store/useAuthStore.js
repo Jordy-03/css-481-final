@@ -3,6 +3,7 @@ import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 
+// Create a base URL that will be used to connect to server.
 const baseUrl = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
 
 // Allows us to destructure authUser so that 
