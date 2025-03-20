@@ -16,7 +16,11 @@ const NavBar = () => {
                 <div className="flex items-center justify-between h-full">
                     <div className="flex items-center gap-8">
                         <Link to="/" className="flex items-center gap-2">
-                            MALARKY!
+                            <img 
+                                src="/public/MalarkyLogo.png" 
+                                alt="Malarky Logo" 
+                                className="h-[125px] w-auto object-contain"
+                            />
                         </Link>
                     </div>
                 </div>
