@@ -1,16 +1,9 @@
 # Malarky [Chatroom]
 
-Overview: Our chat application is 
-designed to allow 
-individuals to exchange 
-messages instantly, 
-providing seamless and 
-real-time communication 
-between user
- Main Problem Addressed:
- There is a lack of a dedicated 
-chatroom application for UWB 
-students to communicate over.
+Overview: Our chat application is designed to allow individuals to exchange messages instantly, providing seamless and 
+real-time communication between user <br>
+Main Problem Addressed: There is a lack of a dedicated chatroom application for UWB students to communicate over. We
+wanted to solve this by providing a secure connection spanning everyone within UWB.
 
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
