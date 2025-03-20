@@ -6,7 +6,8 @@
 real-time communication between user 
 <br><br>
 **Main Problem Addressed:** There doesn't exist a dedicated chatroom application for UWB students to communicate between
-one another. To solve this, we provide a secure and private connection where people may DM with others.
+one another. To solve this, we provide a secure and private connection where people may DM with other students they may
+not know.
 
 ## How To Run Webpage
 To run the webpage, complete the following steps:
